@@ -7,64 +7,18 @@ const ActivityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { getActivityById, dispatch } = useContext(AppContext);
-
   const activity = getActivityById(id);
 
-  if (!activity) {
-    return (
-      <div className="page">
-        <div className="empty-state">
-          <p>Activity not found.</p>
-          <Link to="/activities" className="btn btn-outline">← Back to Activities</Link>
-        </div>
-      </div>
-    );
-  }
+  if (!activity) return <div className="page"><p>Activity not found.</p></div>;
 
-  const handleDelete = () => {
-    dispatch({ type: ACTIONS.DELETE_ACTIVITY, payload: id });
-    navigate('/activities');
-  };
+  const handleDelete = () => { dispatch({ type: ACTIONS.DELETE_ACTIVITY, payload: id }); navigate('/activities'); };
 
   return (
-    <div className="page">
-      <div className="page-header">
-        <h2>Activity Detail</h2>
-        <Link to="/activities" className="btn btn-outline">← Back</Link>
-      </div>
-
-      <div className="detail-card card" data-testid="activity-item">
-        <h3 className="detail-title">{activity.name}</h3>
-        <div className="detail-grid">
-          <div className="detail-row">
-            <span className="detail-label">📅 Date</span>
-            <span className="detail-value">{activity.date}</span>
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">👟 Steps</span>
-            <span className="detail-value">{activity.steps.toLocaleString()}</span>
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">🔥 Calories Burned</span>
-            <span className="detail-value">{activity.caloriesBurned} kcal</span>
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">⏱ Workout Minutes</span>
-            <span className="detail-value">{activity.workoutMinutes} min</span>
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">🎯 Goal Achieved</span>
-            <span className={`badge ${activity.goalAchieved ? 'badge-success' : 'badge-fail'}`}>
-              {activity.goalAchieved ? '✅ Yes' : '❌ No'}
-            </span>
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">🆔 Activity ID</span>
-            <span className="detail-value id-text">{activity.activityId}</span>
-          </div>
-        </div>
-        <button className="btn btn-danger" onClick={handleDelete}>🗑 Delete Activity</button>
-      </div>
+    <div className="page" data-testid="activity-item">
+      <h2>{activity.name}</h2>
+      <p>{activity.date} | {activity.steps.toLocaleString()} steps |{activity.caloriesBurned} kcal | {activity.workoutMinutes} min</p>
+      <p>Goal: {activity.goalAchieved ? 'Yes' : 'No'} | {activity.activityId}</p>
+      <button onClick={handleDelete}>🗑 Delete</button>
     </div>
   );
 };
