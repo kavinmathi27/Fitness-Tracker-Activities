@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <Link to="/activities" className="nav-brand">🏃 FitTracker</Link>
+        <Link to="/activities" className="nav-brand">FitTracker</Link>
         <ul className="nav-links">
           <li><NavLink to="/activities" className={({ isActive }) => isActive ? 'active' : ''}>Activities</NavLink></li>
           <li><NavLink to="/filter"     className={({ isActive }) => isActive ? 'active' : ''}>Filter</NavLink></li>
@@ -13,6 +13,4 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

@@ -5,7 +5,7 @@ import ActivityDetail from '../pages/ActivityDetail';
 import Filter from '../pages/Filter';
 import Stats from '../pages/Stats';
 
-const AppRouter = () => {
+export default function AppRouter() {
   return (
     <BrowserRouter>
       <Navbar />
@@ -20,6 +20,4 @@ const AppRouter = () => {
       </main>
     </BrowserRouter>
   );
-};
-
-export default AppRouter;
+}
