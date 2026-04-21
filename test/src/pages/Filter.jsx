@@ -16,12 +16,12 @@ const Filter = () => {
   return (
     <div>
       <h2>Filter Activities</h2>
-      <input name="name" placeholder="Search by name" value={criteria.name || ''} onChange={handleChange} />
-      <input name="minCalories" type="number" placeholder="Min Calories" value={criteria.minCalories || ''} onChange={handleChange} />
-      <input name="maxCalories" type="number" placeholder="Max Calories" value={criteria.maxCalories || ''} onChange={handleChange} />
-      <input name="startDate" type="date" value={criteria.startDate || ''} onChange={handleChange} />
-      <input name="endDate" type="date" value={criteria.endDate || ''} onChange={handleChange} />
-      <label><input name="goalAchieved" type="checkbox" checked={criteria.goalAchieved === true} onChange={handleChange} /> Goal Achieved Only</label>
+      <input name="name" placeholder="Search by name" onChange={handleChange} />
+      <input name="minCalories" type="number" placeholder="Min Calories" onChange={handleChange} />
+      <input name="maxCalories" type="number" placeholder="Max Calories" onChange={handleChange} />
+      <input name="startDate" type="date" onChange={handleChange} />
+      <input name="endDate" type="date" onChange={handleChange} />
+      <label><input name="goalAchieved" type="checkbox" onChange={handleChange} /> Goal Achieved Only</label>
       <button onClick={() => setCriteria({ name: '', goalAchieved: undefined, minCalories: '', maxCalories: '', startDate: '', endDate: '' })}>Reset</button>
 
       <h3>Results ({filtered.length})</h3>
@@ -29,7 +29,7 @@ const Filter = () => {
       <ul>
         {filtered.map(a => (
           <li key={a.activityId} data-testid="activity-item">
-            <Link to={`/activities/${a.activityId}`}>{a.name} — {a.date} — {a.caloriesBurned} cal</Link>
+            <Link></Link>
           </li>
         ))}
       </ul>

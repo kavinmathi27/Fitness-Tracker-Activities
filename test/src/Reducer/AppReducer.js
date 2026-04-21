@@ -11,8 +11,7 @@ export const ACTIONS = {
 
 export const initialState = {
   activities: [],
-  loading: false,
-  error: null
+  loading: false
 };
 
 
@@ -20,18 +19,13 @@ export const appReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.SET_ACTIVITIES:
       return {
-        ...state,
-        activities: action.payload,
-        loading: false,
-        error: null
+        ...state, activities: action.payload, loading: false,
       };
 
     case ACTIONS.ADD_ACTIVITY:
       return {
-        ...state,
-        activities: [...state.activities, action.payload],
-        loading: false,
-        error: null
+        ...state, activities: [...state.activities, action.payload], loading: false,
+        
       };
 
     case ACTIONS.UPDATE_ACTIVITY:
@@ -43,7 +37,6 @@ export const appReducer = (state, action) => {
             : activity
         ),
         loading: false,
-        error: null
       };
 
     case ACTIONS.DELETE_ACTIVITY:
@@ -53,13 +46,11 @@ export const appReducer = (state, action) => {
           activity => activity.activityId !== action.payload
         ),
         loading: false,
-        error: null
       };
 
     case ACTIONS.SET_LOADING:
       return {
-        ...state,
-        loading: action.payload
+        ...state, loading: action.payload
       };
 
     case ACTIONS.SET_ERROR:
