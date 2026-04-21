@@ -19,13 +19,12 @@ export const appReducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.SET_ACTIVITIES:
       return {
-        ...state, activities: action.payload, loading: false,
+        ...state, activities: action.payload, loading: false
       };
 
     case ACTIONS.ADD_ACTIVITY:
       return {
-        ...state, activities: [...state.activities, action.payload], loading: false,
-        
+        ...state, activities: [...state.activities, action.payload], loading: false
       };
 
     case ACTIONS.UPDATE_ACTIVITY:
@@ -36,7 +35,7 @@ export const appReducer = (state, action) => {
             ? action.payload
             : activity
         ),
-        loading: false,
+        loading: false
       };
 
     case ACTIONS.DELETE_ACTIVITY:
@@ -45,7 +44,7 @@ export const appReducer = (state, action) => {
         activities: state.activities.filter(
           activity => activity.activityId !== action.payload
         ),
-        loading: false,
+        loading: false
       };
 
     case ACTIONS.SET_LOADING:
